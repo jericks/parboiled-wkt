@@ -85,3 +85,6 @@ Once you have parse a WKT String into a **org.cugos.parboiledwkt.Geometry** you 
 Licene
 ------
 Parboiled WKT is open source and licensed under the MIT License.
+
+.. image:: https://travis-ci.org/jericks/parboiled-wkt.svg?branch=master
+    :target: https://travis-ci.org/jericks/parboiled-wkt
