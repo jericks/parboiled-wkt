@@ -30,6 +30,7 @@ public class PointTest {
         assertTrue(Double.isNaN(point.getCoordinate().getM()));
         assertTrue(Double.isNaN(point.getCoordinate().getZ()));
         assertNull(point.getSrid());
+        assertEquals(0, point.getNumberOfCoordinates());
         assertEquals("POINT EMPTY", point.toString());
     }
 
@@ -50,6 +51,7 @@ public class PointTest {
         assertTrue(Double.isNaN(point.getCoordinate().getZ()));
         assertNull(point.getSrid());
         assertEquals("POINT (1.0 2.0)", point.toString());
+        assertEquals(1, point.getNumberOfCoordinates());
     }
 
     @Test

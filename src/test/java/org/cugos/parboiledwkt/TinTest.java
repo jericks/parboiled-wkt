@@ -23,6 +23,7 @@ public class TinTest {
         assertEquals(Dimension.Two, t.getDimension());
         // WKT
         assertEquals("TIN EMPTY", t.toString());
+        assertEquals(0, t.getNumberOfCoordinates());
     }
 
     @Test
@@ -36,6 +37,7 @@ public class TinTest {
         Tin t = (Tin) geometry;
         assertNull(t.getSrid());
         assertEquals(Dimension.Two, t.getDimension());
+        assertEquals(8, t.getNumberOfCoordinates());
         assertEquals(2, t.getTriangles().size());
         // 0
         Triangle triangle = t.getTriangles().get(0);

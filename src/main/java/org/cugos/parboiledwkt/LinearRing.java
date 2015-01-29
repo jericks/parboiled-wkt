@@ -27,4 +27,8 @@ public class LinearRing extends LineString {
         super(coordinates, dimension, srid);
     }
 
+    @Override
+    public int getNumberOfCoordinates() {
+        return this.getCoordinates().size();
+    }
 }

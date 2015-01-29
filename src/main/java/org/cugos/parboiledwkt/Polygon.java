@@ -63,4 +63,12 @@ public class Polygon extends Surface {
         return outerLinearRing == null | outerLinearRing.isEmpty();
     }
 
+    @Override
+    public int getNumberOfCoordinates() {
+        int numberOfCoordinates = outerLinearRing.getNumberOfCoordinates();
+        for(LinearRing linearRing : innerLinearRings) {
+            numberOfCoordinates += linearRing.getNumberOfCoordinates();
+        }
+        return numberOfCoordinates;
+    }
 }

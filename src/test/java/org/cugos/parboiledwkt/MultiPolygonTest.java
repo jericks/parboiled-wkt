@@ -36,6 +36,7 @@ public class MultiPolygonTest {
         MultiPolygon mp = (MultiPolygon) geometry;
         assertNull(mp.getSrid());
         assertEquals(Dimension.Two, mp.getDimension());
+        assertEquals(14, mp.getNumberOfCoordinates());
         assertEquals(2, mp.getPolygons().size());
         // 0
         Polygon polygon = mp.getPolygons().get(0);

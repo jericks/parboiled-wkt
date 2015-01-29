@@ -33,6 +33,7 @@ public class MultiLineStringTest {
         MultiLineString mls = (MultiLineString) geometry;
         assertEquals(Dimension.Two, mls.getDimension());
         assertEquals(2, mls.getLineStrings().size());
+        assertEquals(6, mls.getNumberOfCoordinates());
         // 0
         LineString line = mls.getLineStrings().get(0);
         assertEquals(3, line.getCoordinates().size());

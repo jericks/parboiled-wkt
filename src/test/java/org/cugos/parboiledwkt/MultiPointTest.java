@@ -34,6 +34,7 @@ public class MultiPointTest {
         assertNotNull(geometry);
         assertTrue(geometry instanceof MultiPoint);
         MultiPoint mp = (MultiPoint) geometry;
+        assertEquals(4, mp.getNumberOfCoordinates());
         assertEquals(4, mp.getPoints().size());
         // 0
         Coordinate c = mp.getPoints().get(0).getCoordinate();

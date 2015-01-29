@@ -47,4 +47,8 @@ public class LineString extends Curve {
         return coordinates.isEmpty();
     }
 
+    @Override
+    public int getNumberOfCoordinates() {
+        return this.getCoordinates().size();
+    }
 }

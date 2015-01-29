@@ -37,6 +37,7 @@ public class CircularStringTest {
                 new Coordinate(2, 2)
         ), Dimension.Two, "4326");
         assertEquals(3, cs.getCoordinates().size());
+        assertEquals(3, cs.getNumberOfCoordinates());
         assertEquals(Dimension.Two, cs.getDimension());
         assertEquals("4326", cs.getSrid());
         assertEquals(Coordinate.create2D(1, 1), cs.getCoordinates().get(0));
@@ -56,6 +57,7 @@ public class CircularStringTest {
         assertNull(line.getSrid());
         assertTrue(line.getCoordinates().isEmpty());
         assertEquals("CIRCULARSTRING EMPTY", line.toString());
+        assertEquals(0, line.getNumberOfCoordinates());
     }
 
     @Test

@@ -20,6 +20,7 @@ public class PolyHedralSurfaceTest {
         assertTrue(phs.getPolygons().isEmpty());
         // WKT
         assertEquals("POLYHEDRALSURFACE EMPTY", phs.toString());
+        assertEquals(0, phs.getNumberOfCoordinates());
     }
 
     @Test
@@ -36,6 +37,7 @@ public class PolyHedralSurfaceTest {
         PolyHedralSurface phs = (PolyHedralSurface) geometry;
         assertNull(phs.getSrid());
         assertEquals(Dimension.Two, phs.getDimension());
+        assertEquals(14, phs.getNumberOfCoordinates());
         assertEquals(2, phs.getPolygons().size());
         // 0
         Polygon polygon = phs.getPolygons().get(0);

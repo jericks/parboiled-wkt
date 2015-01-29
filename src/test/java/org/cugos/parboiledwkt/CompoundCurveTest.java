@@ -35,6 +35,7 @@ public class CompoundCurveTest {
         assertTrue(geometry instanceof CompoundCurve);
         CompoundCurve cc = (CompoundCurve) geometry;
         assertEquals(2, cc.getCurves().size());
+        assertEquals(5, cc.getNumberOfCoordinates());
         assertNull(cc.getSrid());
         assertEquals(Dimension.Two, cc.getDimension());
         // 0

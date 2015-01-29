@@ -23,6 +23,7 @@ public class TriangleTest {
         assertEquals(Dimension.Two, t.getDimension());
         // WKT
         assertEquals("TRIANGLE EMPTY", t.toString());
+        assertEquals(0, t.getNumberOfCoordinates());
     }
 
     @Test
@@ -36,6 +37,7 @@ public class TriangleTest {
         Triangle t = (Triangle) geometry;
         assertNull(t.getSrid());
         assertEquals(Dimension.Two, t.getDimension());
+        assertEquals(4, t.getNumberOfCoordinates());
         assertEquals(4, t.getOuterLinearRing().getCoordinates().size());
         assertEquals(Coordinate.create2D(0, 0), t.getOuterLinearRing().getCoordinates().get(0));
         assertEquals(Coordinate.create2D(0, 1), t.getOuterLinearRing().getCoordinates().get(1));

@@ -32,6 +32,7 @@ public class GeometryCollectionTest {
         assertTrue(geometry instanceof GeometryCollection);
         GeometryCollection gc = (GeometryCollection) geometry;
         assertNull(gc.getSrid());
+        assertEquals(3, gc.getNumberOfCoordinates());
         assertEquals(Dimension.Two, gc.getDimension());
         assertEquals(2, gc.getGeometries().size());
         // 0

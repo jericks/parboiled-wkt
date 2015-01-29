@@ -34,4 +34,13 @@ public abstract class AbstractGeometryCollection<T extends Geometry> extends Geo
     public String toString() {
         return new WKTWriter().write(this);
     }
+
+    @Override
+    public int getNumberOfCoordinates() {
+        int numberOfCoordinates = 0;
+        for(Geometry geometry : this.geometries) {
+            numberOfCoordinates += geometry.getNumberOfCoordinates();
+        }
+        return numberOfCoordinates;
+    }
 }

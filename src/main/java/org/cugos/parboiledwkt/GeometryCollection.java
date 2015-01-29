@@ -41,4 +41,12 @@ public class GeometryCollection extends AbstractGeometryCollection<Geometry> {
 
     }
 
+    @Override
+    public int getNumberOfCoordinates() {
+        int numberOfCoordinates = 0;
+        for(Geometry geometry : geometries) {
+            numberOfCoordinates += geometry.getNumberOfCoordinates();
+        }
+        return numberOfCoordinates;
+    }
 }

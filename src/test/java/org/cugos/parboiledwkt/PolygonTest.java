@@ -20,6 +20,7 @@ public class PolygonTest {
         assertTrue(p.getOuterLinearRing().getCoordinates().isEmpty());
         assertTrue(p.getInnerLinearRings().isEmpty());
         assertEquals("POLYGON EMPTY", p.toString());
+        assertEquals(0, p.getNumberOfCoordinates());
     }
 
     @Test
@@ -33,6 +34,7 @@ public class PolygonTest {
         Polygon p = (Polygon) geometry;
         assertNull(p.getSrid());
         assertNotNull(p.getOuterLinearRing());
+        assertEquals(9, p.getNumberOfCoordinates());
         assertEquals(5, p.getOuterLinearRing().getCoordinates().size());
         assertEquals(1, p.getInnerLinearRings().size());
         // Outer Ring

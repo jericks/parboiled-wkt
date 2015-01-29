@@ -38,4 +38,12 @@ public class PolyHedralSurface extends Surface {
         return polygons.isEmpty();
     }
 
+    @Override
+    public int getNumberOfCoordinates() {
+        int numberOfCoordinates = 0;
+        for(Polygon polygon : this.polygons) {
+            numberOfCoordinates += polygon.getNumberOfCoordinates();
+        }
+        return numberOfCoordinates;
+    }
 }

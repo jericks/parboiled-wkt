@@ -36,6 +36,7 @@ public class MultiSurfaceTest {
         assertFalse(ms.isEmpty());
         assertNull(ms.getSrid());
         assertEquals(Dimension.Two, ms.getDimension());
+        assertEquals(17, ms.getNumberOfCoordinates());
         assertEquals(2, ms.getSurfaces().size());
         // 0
         assertTrue(ms.getSurfaces().get(0) instanceof CurvePolygon);

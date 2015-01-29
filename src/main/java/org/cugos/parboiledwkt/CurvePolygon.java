@@ -62,4 +62,13 @@ public class CurvePolygon extends Surface {
     public boolean isEmpty() {
         return outerCurve == null | outerCurve.isEmpty();
     }
+
+    @Override
+    public int getNumberOfCoordinates() {
+        int numberOfCoordinates = outerCurve.getNumberOfCoordinates();
+        for(Curve curve : innerCurves) {
+            numberOfCoordinates += curve.getNumberOfCoordinates();
+        }
+        return numberOfCoordinates;
+    }
 }

@@ -47,4 +47,12 @@ public class Tin extends Surface {
         return triangles.isEmpty();
     }
 
+    @Override
+    public int getNumberOfCoordinates() {
+        int numberOfCoordinates = 0;
+        for(Triangle triangle : this.triangles) {
+            numberOfCoordinates += triangle.getNumberOfCoordinates();
+        }
+        return numberOfCoordinates;
+    }
 }

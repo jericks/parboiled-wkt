@@ -35,6 +35,7 @@ public class LineStringTest {
         assertTrue(geometry instanceof LineString);
         LineString line = (LineString) geometry;
         assertNull(line.getSrid());
+        assertEquals(2, line.getNumberOfCoordinates());
         assertEquals(2, line.getCoordinates().size());
         // 0
         Coordinate c = line.getCoordinates().get(0);

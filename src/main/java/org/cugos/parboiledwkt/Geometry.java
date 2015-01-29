@@ -33,6 +33,12 @@ public abstract class Geometry {
     public abstract boolean isEmpty();
 
     /**
+     * Get the number of coordinates
+     * @return The number of coordinates
+     */
+    public abstract int getNumberOfCoordinates();
+
+    /**
      * Get the SRID which often is null
      * @return The SRID
      */

@@ -35,6 +35,7 @@ public class MultiCurveTest {
         assertTrue(geometry instanceof MultiCurve);
         MultiCurve mc = (MultiCurve) geometry;
         assertFalse(mc.isEmpty());
+        assertEquals(7, mc.getNumberOfCoordinates());
         assertNull(mc.getSrid());
         assertEquals(Dimension.Two, mc.getDimension());
         assertEquals(2, mc.getCurves().size());

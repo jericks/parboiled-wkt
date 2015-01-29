@@ -47,4 +47,9 @@ public class CircularString extends Curve {
         return coordinates.isEmpty();
     }
 
+    @Override
+    public int getNumberOfCoordinates() {
+        return this.coordinates.size();
+    }
+
 }

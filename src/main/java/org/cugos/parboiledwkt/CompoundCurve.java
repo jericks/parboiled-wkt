@@ -46,4 +46,13 @@ public class CompoundCurve extends Curve {
     public boolean isEmpty() {
         return curves.isEmpty();
     }
+
+    @Override
+    public int getNumberOfCoordinates() {
+        int numberOfCoordinates = 0;
+        for(Curve curve : curves) {
+            numberOfCoordinates += curve.getNumberOfCoordinates();
+        }
+        return numberOfCoordinates;
+    }
 }

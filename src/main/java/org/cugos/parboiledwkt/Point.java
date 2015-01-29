@@ -44,4 +44,8 @@ public class Point extends Geometry {
         return this.coordinate == null || this.coordinate.isEmpty();
     }
 
+    @Override
+    public int getNumberOfCoordinates() {
+        return isEmpty() ? 0 : 1;
+    }
 }
