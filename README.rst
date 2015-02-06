@@ -44,6 +44,8 @@ It does not use the awesome Java Topology Suite(JTS) because it parses Geometry 
 
     TRIANGLE ((0.0 0.0, 0.0 1.0, 1.0 1.0, 0.0 0.0))
 
+Parboiled WKT can now also read and write WKB and `EWKB <http://lists.osgeo.org/pipermail/postgis-devel/2004-December/000710.html>`_.
+
 Use
 ---
 The low level parboiled parser is **org.cugos.parboiledwkt.WKTParser**::
@@ -81,6 +83,25 @@ Once you have parse a WKT String into a **org.cugos.parboiledwkt.Geometry** you 
         Dimension.Two)
     )
     String wkt = writer.write(cs);
+
+You can also read and write WKB and EWKB::
+
+    import org.cugos.parboiledwkt.WKTReader;
+    import org.cugos.parboiledwkt.Geometry;
+
+    import org.cugos.parboiledwkb.WKBWriter;
+    import org.cugos.parboiledwkb.WKBReader;
+    import org.cugos.parboiledwkt.WKB.Endian;
+    import org.cugos.parboiledwkt.WKB.Type;
+
+    WKTReader reader = new WKTReader();
+    Geometry geometry = reader.read("POINT (2 4)");
+
+    WKBWriter writer = new WKBWriter(Type.WKB, Endian.Big);
+    byte[] wkb = wkb.write(geometry);
+
+    WKBReader wkbReader = new WKBReader();
+    Geometry point = wkb.read(wkb);
 
 Licene
 ------
