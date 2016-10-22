@@ -91,7 +91,7 @@ public class MultiSurfaceTest {
         assertEquals(Coordinate.create2D(11, 11.5), ir.getCoordinates().get(2));
         assertEquals(Coordinate.create2D(11, 11), ir.getCoordinates().get(3));
         // WKT
-        assertEquals("MULTISURFACE (CURVEPOLYGON (CIRCULARSTRING (0.0 0.0, 4.0 0.0, 4.0 4.0, 0.0 4.0, 0.0 0.0)), " +
+        assertEquals("MULTISURFACE (CURVEPOLYGON (CIRCULARSTRING (0.0 0.0, 4.0 0.0, 4.0 4.0, 0.0 4.0, 0.0 0.0), " +
                         "(1.0 1.0, 3.0 3.0, 3.0 1.0, 1.0 1.0)), " +
                         "((10.0 10.0, 14.0 12.0, 11.0 10.0, 10.0 10.0), (11.0 11.0, 11.5 11.0, 11.0 11.5, 11.0 11.0)))",
                 ms.toString());
@@ -163,7 +163,7 @@ public class MultiSurfaceTest {
         assertEquals(Coordinate.create2D(11, 11.5), ir.getCoordinates().get(2));
         assertEquals(Coordinate.create2D(11, 11), ir.getCoordinates().get(3));
         // WKT
-        assertEquals("SRID=4326;MULTISURFACE (CURVEPOLYGON (CIRCULARSTRING (0.0 0.0, 4.0 0.0, 4.0 4.0, 0.0 4.0, 0.0 0.0)), " +
+        assertEquals("SRID=4326;MULTISURFACE (CURVEPOLYGON (CIRCULARSTRING (0.0 0.0, 4.0 0.0, 4.0 4.0, 0.0 4.0, 0.0 0.0), " +
                         "(1.0 1.0, 3.0 3.0, 3.0 1.0, 1.0 1.0)), " +
                         "((10.0 10.0, 14.0 12.0, 11.0 10.0, 10.0 10.0), (11.0 11.0, 11.5 11.0, 11.0 11.5, 11.0 11.0)))",
                 ms.toString());
@@ -236,7 +236,7 @@ public class MultiSurfaceTest {
         assertEquals(Coordinate.create2DM(11, 11.5, 32), ir.getCoordinates().get(2));
         assertEquals(Coordinate.create2DM(11, 11, 30), ir.getCoordinates().get(3));
         // WKT
-        assertEquals("MULTISURFACE M (CURVEPOLYGON (CIRCULARSTRING (0.0 0.0 1.0, 4.0 0.0 2.0, 4.0 4.0 3.0, 0.0 4.0 4.0, 0.0 0.0 1.0)), " +
+        assertEquals("MULTISURFACE M (CURVEPOLYGON (CIRCULARSTRING (0.0 0.0 1.0, 4.0 0.0 2.0, 4.0 4.0 3.0, 0.0 4.0 4.0, 0.0 0.0 1.0), " +
                         "(1.0 1.0 1.0, 3.0 3.0 2.0, 3.0 1.0 3.0, 1.0 1.0 1.0)), " +
                         "((10.0 10.0 20.0, 14.0 12.0 21.0, 11.0 10.0 22.0, 10.0 10.0 20.0), " +
                         "(11.0 11.0 30.0, 11.5 11.0 31.0, 11.0 11.5 32.0, 11.0 11.0 30.0)))",
@@ -310,7 +310,7 @@ public class MultiSurfaceTest {
         assertEquals(Coordinate.create3D(11, 11.5, 32), ir.getCoordinates().get(2));
         assertEquals(Coordinate.create3D(11, 11, 30), ir.getCoordinates().get(3));
         // WKT
-        assertEquals("MULTISURFACE Z (CURVEPOLYGON (CIRCULARSTRING (0.0 0.0 1.0, 4.0 0.0 2.0, 4.0 4.0 3.0, 0.0 4.0 4.0, 0.0 0.0 1.0)), " +
+        assertEquals("MULTISURFACE Z (CURVEPOLYGON (CIRCULARSTRING (0.0 0.0 1.0, 4.0 0.0 2.0, 4.0 4.0 3.0, 0.0 4.0 4.0, 0.0 0.0 1.0), " +
                         "(1.0 1.0 1.0, 3.0 3.0 2.0, 3.0 1.0 3.0, 1.0 1.0 1.0)), " +
                         "((10.0 10.0 20.0, 14.0 12.0 21.0, 11.0 10.0 22.0, 10.0 10.0 20.0), " +
                         "(11.0 11.0 30.0, 11.5 11.0 31.0, 11.0 11.5 32.0, 11.0 11.0 30.0)))",
@@ -384,11 +384,29 @@ public class MultiSurfaceTest {
         assertEquals(Coordinate.create3DM(11, 11.5, 32, 32), ir.getCoordinates().get(2));
         assertEquals(Coordinate.create3DM(11, 11, 30, 30), ir.getCoordinates().get(3));
         // WKT
-        assertEquals("MULTISURFACE ZM (CURVEPOLYGON (CIRCULARSTRING (0.0 0.0 1.0 1.0, 4.0 0.0 2.0 2.0, 4.0 4.0 3.0 3.0, 0.0 4.0 4.0 4.0, 0.0 0.0 1.0 1.0)), " +
+        assertEquals("MULTISURFACE ZM (CURVEPOLYGON (CIRCULARSTRING (0.0 0.0 1.0 1.0, 4.0 0.0 2.0 2.0, 4.0 4.0 3.0 3.0, 0.0 4.0 4.0 4.0, 0.0 0.0 1.0 1.0), " +
                         "(1.0 1.0 1.0 1.0, 3.0 3.0 2.0 2.0, 3.0 1.0 3.0 3.0, 1.0 1.0 1.0 1.0)), " +
                         "((10.0 10.0 20.0 20.0, 14.0 12.0 21.0 21.0, 11.0 10.0 22.0 22.0, 10.0 10.0 20.0 20.0), " +
                         "(11.0 11.0 30.0 30.0, 11.5 11.0 31.0 31.0, 11.0 11.5 32.0 32.0, 11.0 11.0 30.0 30.0)))",
                 ms.toString());
+    }
+
+    @Test
+    public void readWriteRead() {
+        WKTReader reader =  new WKTReader();
+        WKTWriter writer = new WKTWriter();
+        String[] wkts = {
+                "MULTISURFACE ZM (CURVEPOLYGON (CIRCULARSTRING (0.0 0.0 1.0 1.0, 4.0 0.0 2.0 2.0, 4.0 4.0 3.0 3.0, 0.0 4.0 4.0 4.0, 0.0 0.0 1.0 1.0), " +
+                        "(1.0 1.0 1.0 1.0, 3.0 3.0 2.0 2.0, 3.0 1.0 3.0 3.0, 1.0 1.0 1.0 1.0)), " +
+                        "((10.0 10.0 20.0 20.0, 14.0 12.0 21.0 21.0, 11.0 10.0 22.0 22.0, 10.0 10.0 20.0 20.0), " +
+                        "(11.0 11.0 30.0 30.0, 11.5 11.0 31.0 31.0, 11.0 11.5 32.0 32.0, 11.0 11.0 30.0 30.0)))"
+        };
+        for(String wkt : wkts) {
+            Geometry g = reader.read(wkt);
+            assertNotNull(g);
+            String newWkt = writer.write(g);
+            assertEquals(wkt, newWkt);
+        }
     }
 }
 

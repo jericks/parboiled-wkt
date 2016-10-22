@@ -482,7 +482,6 @@ public class WKTWriter {
             } else if (outerCurve instanceof CompoundCurve) {
                 builder.append(write((CompoundCurve) outerCurve, false, false));
             }
-            builder.append(")");
             // Inner rings
             for (Curve curve : p.getInnerCurves()) {
                 builder.append(", ");

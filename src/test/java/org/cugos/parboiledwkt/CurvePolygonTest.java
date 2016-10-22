@@ -63,7 +63,7 @@ public class CurvePolygonTest {
         assertEquals(Coordinate.create2D(1, 1), line.getCoordinates().get(3));
         // WKT
         assertEquals("CURVEPOLYGON (" +
-                        "CIRCULARSTRING (0.0 0.0, 4.0 0.0, 4.0 4.0, 0.0 4.0, 0.0 0.0)), " +
+                        "CIRCULARSTRING (0.0 0.0, 4.0 0.0, 4.0 4.0, 0.0 4.0, 0.0 0.0), " +
                         "(1.0 1.0, 3.0 3.0, 3.0 1.0, 1.0 1.0))",
                 cp.toString());
     }
@@ -104,7 +104,7 @@ public class CurvePolygonTest {
         assertEquals(Coordinate.create2D(1, 1), line.getCoordinates().get(3));
         // WKT
         assertEquals("SRID=4326;CURVEPOLYGON (" +
-                        "CIRCULARSTRING (0.0 0.0, 4.0 0.0, 4.0 4.0, 0.0 4.0, 0.0 0.0)), " +
+                        "CIRCULARSTRING (0.0 0.0, 4.0 0.0, 4.0 4.0, 0.0 4.0, 0.0 0.0), " +
                         "(1.0 1.0, 3.0 3.0, 3.0 1.0, 1.0 1.0))",
                 cp.toString());
     }
@@ -145,7 +145,7 @@ public class CurvePolygonTest {
         assertEquals(Coordinate.create2DM(1, 1, 6), line.getCoordinates().get(3));
         // WKT
         assertEquals("CURVEPOLYGON M (" +
-                        "CIRCULARSTRING (0.0 0.0 1.0, 4.0 0.0 2.0, 4.0 4.0 3.0, 0.0 4.0 4.0, 0.0 0.0 1.0)), " +
+                        "CIRCULARSTRING (0.0 0.0 1.0, 4.0 0.0 2.0, 4.0 4.0 3.0, 0.0 4.0 4.0, 0.0 0.0 1.0), " +
                         "(1.0 1.0 6.0, 3.0 3.0 7.0, 3.0 1.0 8.0, 1.0 1.0 6.0))",
                 cp.toString());
     }
@@ -186,7 +186,7 @@ public class CurvePolygonTest {
         assertEquals(Coordinate.create3D(1, 1, 6), line.getCoordinates().get(3));
         // WKT
         assertEquals("CURVEPOLYGON Z (" +
-                        "CIRCULARSTRING (0.0 0.0 1.0, 4.0 0.0 2.0, 4.0 4.0 3.0, 0.0 4.0 4.0, 0.0 0.0 1.0)), " +
+                        "CIRCULARSTRING (0.0 0.0 1.0, 4.0 0.0 2.0, 4.0 4.0 3.0, 0.0 4.0 4.0, 0.0 0.0 1.0), " +
                         "(1.0 1.0 6.0, 3.0 3.0 7.0, 3.0 1.0 8.0, 1.0 1.0 6.0))",
                 cp.toString());
     }
@@ -227,9 +227,27 @@ public class CurvePolygonTest {
         assertEquals(Coordinate.create3DM(1, 1, 6, 1.11), line.getCoordinates().get(3));
         // WKT
         assertEquals("CURVEPOLYGON ZM (" +
-                        "CIRCULARSTRING (0.0 0.0 1.0 2.3, 4.0 0.0 2.0 3.3, 4.0 4.0 3.0 4.3, 0.0 4.0 4.0 5.3, 0.0 0.0 1.0 2.3)), " +
+                        "CIRCULARSTRING (0.0 0.0 1.0 2.3, 4.0 0.0 2.0 3.3, 4.0 4.0 3.0 4.3, 0.0 4.0 4.0 5.3, 0.0 0.0 1.0 2.3), " +
                         "(1.0 1.0 6.0 1.11, 3.0 3.0 7.0 2.22, 3.0 1.0 8.0 3.33, 1.0 1.0 6.0 1.11))",
                 cp.toString());
+    }
+
+    @Test
+    public void readWriteRead() {
+        WKTReader reader =  new WKTReader();
+        WKTWriter writer = new WKTWriter();
+        String[] wkts = {
+                "CURVEPOLYGON ZM (" +
+                        "CIRCULARSTRING (0.0 0.0 1.0 2.3, 4.0 0.0 2.0 3.3, 4.0 4.0 3.0 4.3, 0.0 4.0 4.0 5.3, 0.0 0.0 1.0 2.3), " +
+                        "(1.0 1.0 6.0 1.11, 3.0 3.0 7.0 2.22, 3.0 1.0 8.0 3.33, 1.0 1.0 6.0 1.11)" +
+                ")"
+        };
+        for(String wkt : wkts) {
+            Geometry g = reader.read(wkt);
+            assertNotNull(g);
+            String newWkt = writer.write(g);
+            assertEquals(wkt, newWkt);
+        }
     }
 
 }
