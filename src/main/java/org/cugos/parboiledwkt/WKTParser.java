@@ -822,6 +822,10 @@ public class WKTParser extends BaseParser<Object> {
                 coord.setZ(Double.parseDouble(value));
             }
         } else if (type.equalsIgnoreCase("m")) {
+            // Support for POINT(0 0 5 4) which should be POINT ZM (0 0 5 4)
+            if (dimension == Dimension.Three) {
+                dimension = Dimension.ThreeMeasured;
+            }
             coord.setM(Double.parseDouble(value));
         }
         return true;

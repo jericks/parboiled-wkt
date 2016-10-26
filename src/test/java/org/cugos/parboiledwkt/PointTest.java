@@ -131,6 +131,44 @@ public class PointTest {
     }
 
     @Test
+    public void threeDimensionalWithoutZ() {
+        WKTParser parser = Parboiled.createParser(WKTParser.class);
+        ParsingResult<Geometry> result = new ReportingParseRunner(parser.WKT()).run("POINT (1 2 5)");
+        Geometry geometry = result.resultValue;
+        assertNotNull(geometry);
+        assertTrue(geometry instanceof Point);
+        Point point = (Point) geometry;
+        assertEquals(Dimension.Three, point.getDimension());
+        assertFalse(point.getCoordinate().isEmpty());
+        assertTrue(point.getCoordinate().getDimension() == Dimension.Three);
+        assertEquals(1, point.getCoordinate().getX(), 0.001);
+        assertEquals(2, point.getCoordinate().getY(), 0.001);
+        assertEquals(5, point.getCoordinate().getZ(), 0.001);
+        assertTrue(Double.isNaN(point.getCoordinate().getM()));
+        assertNull(point.getSrid());
+        assertEquals("POINT Z (1.0 2.0 5.0)", point.toString());
+    }
+
+    @Test
+    public void threeDimensionalMeasuredWithoutZM() {
+        WKTParser parser = Parboiled.createParser(WKTParser.class);
+        ParsingResult<Geometry> result = new ReportingParseRunner(parser.WKT()).run("POINT (1 2 5 4)");
+        Geometry geometry = result.resultValue;
+        assertNotNull(geometry);
+        assertTrue(geometry instanceof Point);
+        Point point = (Point) geometry;
+        assertEquals(Dimension.ThreeMeasured, point.getDimension());
+        assertFalse(point.getCoordinate().isEmpty());
+        assertTrue(point.getCoordinate().getDimension() == Dimension.ThreeMeasured);
+        assertEquals(1, point.getCoordinate().getX(), 0.001);
+        assertEquals(2, point.getCoordinate().getY(), 0.001);
+        assertEquals(5, point.getCoordinate().getZ(), 0.001);
+        assertEquals(4, point.getCoordinate().getM(), 0.001);
+        assertNull(point.getSrid());
+        assertEquals("POINT ZM (1.0 2.0 5.0 4.0)", point.toString());
+    }
+
+    @Test
     public void parseMultiple() {
         WKTParser parser = Parboiled.createParser(WKTParser.class);
         // 1
