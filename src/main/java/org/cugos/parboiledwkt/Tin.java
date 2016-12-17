@@ -19,7 +19,7 @@ public class Tin extends Surface {
      * @param triangles The List of Triangles
      * @param dimension The Dimension
      */
-    protected Tin(List<Triangle> triangles, Dimension dimension) {
+    public Tin(List<Triangle> triangles, Dimension dimension) {
         this(triangles, dimension, null);
     }
 
@@ -29,7 +29,7 @@ public class Tin extends Surface {
      * @param dimension The Dimension
      * @param srid The SRID
      */
-    protected Tin(List<Triangle> triangles, Dimension dimension, String srid) {
+    public Tin(List<Triangle> triangles, Dimension dimension, String srid) {
         super(dimension, srid);
         this.triangles = Collections.unmodifiableList(triangles);
     }
