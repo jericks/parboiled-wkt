@@ -168,7 +168,7 @@ public class WKBWriter {
         }  else if (g instanceof CurvePolygon) {
             putCurvePolygon(buffer, (CurvePolygon) g);
         } else if (g instanceof MultiCurve) {
-           putMultiCurve(buffer, (MultiCurve) g);
+            putMultiCurve(buffer, (MultiCurve) g);
         } else if (g instanceof PolyHedralSurface) {
             putPolyHedralSurface(buffer, (PolyHedralSurface) g);
         } else if (g instanceof MultiSurface) {
@@ -327,7 +327,7 @@ public class WKBWriter {
      */
     private int calculateNumberOfBytes(Point point) {
         return calculateNumberOfBytes(point.getSrid()) +
-                calculateNumberOfBytes(point.getNumberOfCoordinates(), point.getDimension());
+            calculateNumberOfBytes(point.getNumberOfCoordinates(), point.getDimension());
     }
 
     /**
@@ -373,7 +373,7 @@ public class WKBWriter {
      */
     private int calculateNumberOfBytes(LinearRing linearRing) {
         return 4 + calculateNumberOfBytes(linearRing.getSrid()) +
-                calculateNumberOfBytes(linearRing.getNumberOfCoordinates(), linearRing.getDimension());
+            calculateNumberOfBytes(linearRing.getNumberOfCoordinates(), linearRing.getDimension());
     }
 
     /**
@@ -419,7 +419,7 @@ public class WKBWriter {
      */
     private int calculateNumberOfBytes(LineString lineString) {
         return 4 + calculateNumberOfBytes(lineString.getSrid()) +
-                calculateNumberOfBytes(lineString.getNumberOfCoordinates(), lineString.getDimension());
+            calculateNumberOfBytes(lineString.getNumberOfCoordinates(), lineString.getDimension());
     }
 
     /**
@@ -735,7 +735,7 @@ public class WKBWriter {
      */
     private int calculateNumberOfBytes(CircularString circularString) {
         return 4 + calculateNumberOfBytes(circularString.getSrid()) +
-                calculateNumberOfBytes(circularString.getNumberOfCoordinates(), circularString.getDimension());
+            calculateNumberOfBytes(circularString.getNumberOfCoordinates(), circularString.getDimension());
     }
 
     /**
@@ -1131,9 +1131,9 @@ public class WKBWriter {
             numberOfRings = 1 + triangle.getInnerLinearRings().size();
         }
         return 4 +
-                numberOfRings * 4 + // Number of coordinate for each ring
-                calculateNumberOfBytes(triangle.getSrid()) +
-                calculateNumberOfBytes(triangle.getNumberOfCoordinates(), triangle.getDimension());
+            numberOfRings * 4 + // Number of coordinate for each ring
+            calculateNumberOfBytes(triangle.getSrid()) +
+            calculateNumberOfBytes(triangle.getNumberOfCoordinates(), triangle.getDimension());
     }
 
     /**

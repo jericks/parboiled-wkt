@@ -49,21 +49,27 @@ public class WKBReader {
         }
 
         // Determine geometry type
-        GeometryType geometryType = GeometryType.get(buffer.getInt());
+        int geometryTypeInt = buffer.getInt();
+        int gt = geometryTypeInt;
 
         // Determine dimension
         boolean hasM = false;
         boolean hasZ = false;
         boolean hasSRID = false;
-        if ((geometryType.getValue() & GeometryTypeFlag.M.getValue()) == GeometryTypeFlag.M.getValue()) {
+        if ((geometryTypeInt & GeometryTypeFlag.M.getValue()) == GeometryTypeFlag.M.getValue()) {
             hasM = true;
+            gt = gt - GeometryTypeFlag.M.getValue();
         }
-        if ((geometryType.getValue() & GeometryTypeFlag.Z.getValue()) == GeometryTypeFlag.Z.getValue()) {
+        if ((geometryTypeInt & GeometryTypeFlag.Z.getValue()) == GeometryTypeFlag.Z.getValue()) {
             hasZ = true;
+            gt = gt - GeometryTypeFlag.Z.getValue();
         }
-        if ((geometryType.getValue() & GeometryTypeFlag.SRID.getValue()) == GeometryTypeFlag.SRID.getValue()) {
+        if ((geometryTypeInt & GeometryTypeFlag.SRID.getValue()) == GeometryTypeFlag.SRID.getValue()) {
             hasSRID = true;
+            gt = gt - GeometryTypeFlag.SRID.getValue();
         }
+
+        GeometryType geometryType = GeometryType.get(gt);
 
         Dimension dimension;
         if (hasZ && hasM) {
@@ -238,7 +244,7 @@ public class WKBReader {
         byte[] data = new byte[len / 2];
         for (int i = 0; i < len; i += 2) {
             data[i / 2] = (byte) ((Character.digit(hexString.charAt(i), 16) << 4)
-                    + Character.digit(hexString.charAt(i+1), 16));
+                + Character.digit(hexString.charAt(i+1), 16));
         }
         return data;
     }
